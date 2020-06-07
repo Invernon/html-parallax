@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Parallax Effect </title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        section.hero {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: url(image/background.png);
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+
+            perspective: 1px;
+            transform: translateZ(-1px);
+            overflow: hidden;
+
+        }
+
+        section.hero .hero-title {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 200%;
+            width: 100%;
+            position: relative;
+            text-align: right;
+            margin: 0 4%;
+            /* background: linear-gradient(90deg, #ffffff11 60%, rgb(48, 48, 48)); */
+            margin-bottom: 40%;
+            z-index: 10;
+        }
+
+        section.hero div.hero-title h1 {
+            margin: 0;
+            padding-right: 2.5rem;
+            color: #00aeef;
+        }
+
+        section.hero div.hero-title span.exclamation {
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 400%;
+            line-height: 90%;
+            color: #f3b244;
+        }
+
+        section.hero div.man-decorator {
+            position: absolute;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            margin: 0 auto;
+            background-image: url(image/man.png);
+            background-attachment: fixed;
+            background-size: auto;
+            background-position: bottom;
+            background-repeat: no-repeat;
+            z-index: 1;
+            height: 500px;
+            width: 100%;
+
+            transform: translateZ(0.1px);
+        }
+
+        section.secondary {
+            width: 100%;
+            padding-top: 3rem;
+            font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #f4ebef;
+            color: #333;
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        section.secondary .inner {
+            margin: 0 auto;
+            padding: 0 10%;
+            left: 0;
+            right: 0;
+            position: relative;
+            height: 100%;
+        }
+
+        .inner h1 {
+            font-size: 2.5rem;
+            padding-bottom: 1rem;
+        }
+
+        .inner h2 {
+            margin-top: 1rem;
+            color: #333;
+            font-size: 1.5rem;
+            padding-bottom: 1rem;
+        }
+
+        .inner p {
+            color: #666;
+        }
+
+        p.message {
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        p.message a {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.5rem;
+            color: #000;
+            transition: .3s;
+        }
+
+        p.message a:hover {
+            color: #f3b244;
+        }
+
+        footer {
+            height: 100px;
+            width: 100%;
+            background: rgb(48, 48, 48);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer img {}
+
+        ul li {
+            margin-top: .5rem;
+        }
+
+        p{
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-title">
+            <h1> Hola <br> Parallax </h1>
+            <span class="exclamation"> ! </span>
+        </div>
+        <div class="man-decorator"></div>
+    </section>
+    <section class="secondary">
+        <div class="inner">
+            <h1>
+                ¿Cómo hacerlo?
+            </h1>
+
+            <p>
+                Primero, debemos definir nuestro contendor que tendrá la imagen más lejana.
+            </p>
+            <p>
+                Luego le colocaremos el siguiente estilo
+            </p>
+            <div class="code-box" style="padding:1rem;">
+                <code>
+                    width: 100%;<br>
+                    height: 100vh;<br>
+                    background-attachment: fixed;<br>
+                    perspective: 1px;<br>
+                    transform: translateZ(-1px);<br>
+                    overflow: hidden;<br>
+                </code>
+            </div>
+            <p>
+                Posteriormente incluimos la propiedad de <code> background-size: cover </code>
+            </p>
+
+            <p>
+                Quedando una clase con los siguientes estilos
+            </p>
+
+            <div class="code-box" style="padding:1rem;">
+                <code>
+                    section{<br>
+                        width: 100%;<br>
+                        height: 100vh;<br>
+                        background-attachment: fixed;<br>
+                        perspective: 1px;<br>
+                        transform: translateZ(-1px);<br>
+                        overflow: hidden;<br>
+                        background-attachment: fixed;<br>
+                        background-size: cover;<br>
+                        background-position: center;
+                    }
+                </code>
+            </div>
+
+            <h2>
+                ¿Bastante sencillo no?
+            </h2>
+            <p>
+                Esta es tan solo una de las muchas formas de realizar este efecto. Es importante recordar lo siguiente:
+            <ul>
+                <li>
+                    La seccion que queremos colocarle el parallax debemos asignarle la imagen como un fondo
+                </li>
+                <li>
+                    La seccion que queremos colocarle el parallax debemos asignarle: <br>
+                    <strong> background-attachment: fixed; </strong>
+                </li>
+
+                <li>
+                    <strong> EXTRA </strong> Si quieres ir colocando capas, para añadir más efectos, puedes hacerlo con 
+                    <code>position:absolute; transform: translateZ(0.1px);</code> <br> tal como hice con la persona.
+                </li>
+            </ul>
+            </p>
+
+            <p class="message">
+                Si te ha gustado este pequeño tutorial... <br>
+                No olvides darle like al post en
+                <a href="https://www.instagram.com/jinverdev/" target="_blank"> Instagram <img
+                        src="./image/instagram.png" alt="Instagram" width="20"> </a>
+                y seguirme en <a href="https://github.com/Invernon" target="_blank">Github <img src="./image/github.png"
+                        alt="github" width="20"> <span>
+                    </span>
+                </a> para estar atento a más contenido.
+            </p>
+        </div>
+
+    </section>
+    <footer>
+        <a href="https://joseinvernon.com" target="_blank">
+            <img src="./image/jinvernon.png" alt="jinvernon" height="80">
+        </a>
+    </footer>
+</body>
+
+</html>
